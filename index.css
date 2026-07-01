@@ -1,0 +1,452 @@
+body {
+  margin:0;
+  padding:0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  /* o el valor que necesites */
+  font-style: normal;
+  background: url("img/fondo.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+}
+
+.oculto {
+  display: none;
+}
+
+
+.modal p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.condiciones {
+  background: linear-gradient(145deg, #f7f7ff, #d0eaff);
+  /* Fondo con gradiente */
+  color: #333;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  animation: entrada 0.5s ease-in-out;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 columna en móvil */
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* Form-group para alinear label e input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.modal-personalizado {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.contenido-modal {
+  background: linear-gradient(145deg, #f7f7ff, #d0eaff);
+  /* Fondo con gradiente */
+  color: #333;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  animation: entrada 0.5s ease-in-out;
+}
+
+.contenido-modal h2 {
+  font-size: 24px;
+  color: #3065b4;
+  margin-bottom: 15px;
+}
+
+.contenido-modal p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.contenido-modal button {
+  background-color: #2979f0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contenido-modal button:hover {
+  background-color: #84b2fc;
+}
+
+/* Animación */
+@keyframes entrada {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+#cerrar-modal {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: #ffcc00;
+  color: rgb(0, 0, 0);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.container {
+   margin-left: 267px;
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 0 15px #f1f1f1;
+  /* animation: float 3s infinite ease-in-out; */
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+h1 {
+
+  margin-top: 0px;
+  text-align: center;
+  color: #f3c12b;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  color: #f9f9f9;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+input,
+select {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+
+
+.botonCerrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  margin-right: -8px;
+  margin-top: -18px;
+  color: rgb(5, 4, 4);
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.avisoBoton {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+
+
+
+button {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff9900;
+}
+
+
+.resultado {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #ffcc00;
+  animation: aparecer 0.5s ease forwards;
+}
+
+
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.botones {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.botones button {
+  padding: 10px 20px;
+  background-color: #ff7f50;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.botones button:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+}
+
+/* Estilo general del modal */
+.modal {
+  display: none;
+  /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Contenido del modal */
+.modal-contenido {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 2px solid #888;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 500px;
+  font-family: sans-serif;
+  position: relative;
+}
+
+/* Botón para cerrar */
+.cerrar {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+.footer-horizontal {
+  background: rgba(85, 83, 83, 0.85); 
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 15px 0;
+  width: 100%;
+  position: relative; /* O 'fixed' y 'bottom: 0' si quieres que siempre esté visible */
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Separa los elementos hacia los lados */
+  align-items: center;
+  padding: 0 30px;
+}
+
+.footer-logo-brand {
+  font-weight: bold;
+  color: #ffcc00;
+  font-size: 1.2rem;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #ffcc00;
+}
+
+.footer-social a {
+  color: white;
+  margin: 0 10px;
+  font-size: 1.1rem;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+  
+  }
+
+  /* Logo más pequeño */
+  .logoViveSano img {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+  }
+
+  /* 👤 usuario más pequeño */
+  .user {
+    margin: 0;
+    padding: 0;
+  }
+
+  .user i {
+    padding: 10px;
+  }
+
+  /* 🍔 Mostrar hamburguesa */
+  .hamburguesa {
+    display: block;
+    color: #d0eaff;
+  }
+
+  /* 🚫 Ocultar menú */
+  .menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: black;
+    display: none;
+    flex-direction: column;
+  }
+
+  /* ✅ Mostrar cuando se active */
+  .menu.activo {
+    display: flex;
+  }
+
+  /* 📱 Ajustar calculadora */
+  .container {
+    margin-left: 0;
+    margin-top: 80px;
+    width: 90%;
+  }
+}
