@@ -220,4 +220,15 @@ formulario.addEventListener("submit", (e) => {
 
   resultado.innerHTML = html;
   abrirModal();
+
+  // guardar para sugerir recetas
+  try {
+    localStorage.setItem("vivesanoCalculo", JSON.stringify({
+      objetivo,
+      enfermedad,
+      calorias: Math.round(calorias)
+    }));
+  } catch (error) {
+    // si el navegador no permite guardar, las recetas se muestran sin sugerencia
+  }
 });

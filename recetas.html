@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis recetas</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="recetas.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <div id="menu"></div>
+
+  <main class="container-recetas">
+    <h1>Mis recetas</h1>
+
+    <div id="sugerencia" class="sugerencia oculto"></div>
+
+    <div class="buscador">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="buscar" placeholder="Buscar receta o ingrediente">
+    </div>
+
+    <div class="filtros" id="filtros">
+      <button type="button" data-filtro="todas" class="activo">Todas</button>
+      <button type="button" data-filtro="bajar">Bajar grasa</button>
+      <button type="button" data-filtro="masa">Masa muscular</button>
+      <button type="button" data-filtro="tonificar">Tonificar</button>
+      <button type="button" data-filtro="mantener">Mantener</button>
+      <button type="button" data-filtro="sin_gluten">Sin gluten</button>
+      <button type="button" data-filtro="bajo_sal">Bajo en sal</button>
+    </div>
+
+    <div id="listaRecetas" class="lista-recetas"></div>
+
+    <p id="sinResultados" class="sin-resultados oculto">No encontramos recetas con ese filtro.</p>
+
+    <div class="volver">
+      <a href="index.html"><i class="fa-solid fa-calculator"></i> Ir a la calculadora</a>
+    </div>
+  </main>
+
+  <script src="menu.js"></script>
+
+  <script>
+  fetch("menu.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("menu").innerHTML = data;
+
+      setTimeout(() => {
+        iniciarMenu();
+      }, 0);
+
+    });
+  </script>
+
+  <script src="recetas.js"></script>
+
+</body>
+
+</html>
