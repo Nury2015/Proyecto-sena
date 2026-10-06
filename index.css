@@ -450,3 +450,26 @@ button[type="submit"] {
     width: 90%;
   }
 }
+/* resultados de la calculadora */
+.resultado h2 {
+  margin-top: 0;
+  color: #3065b4;
+  text-align: center;
+}
+
+.resultado.error {
+  box-shadow: 0 0 10px #ff4d4d;
+  color: #b00020;
+  font-weight: bold;
+}
+
+.advertencia {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.aviso {
+  color: #f3c12b;
+  font-size: 0.9rem;
+  margin: 4px 0;
+}
