@@ -10,6 +10,11 @@ const resultado = document.querySelector("#resultado");
 const cajaError = document.querySelector("#error");
 const modal = document.querySelector("#modalResultados");
 
+// campos que se recuerdan entre visitas
+const camposGuardados = ["edad", "peso", "estatura", "sexo", "condicionFemenina", "trimestre", "actividad", "enfermedad", "objetivo"];
+const camposConHistorial = ["edad", "peso", "estatura"];
+const maxHistorial = 5;
+
 const factoresActividad = {
   sedentario: 1.2,
   ligero: 1.375,
@@ -101,11 +106,91 @@ document.querySelector("#btnRecetas").addEventListener("click", () => {
 
 document.querySelector("#btnRecalcular").addEventListener("click", () => {
   cerrarModal();
+  inputEdad.focus();
+});
+
+// ---- datos guardados (autocompletar) ----
+function leerGuardado(clave) {
+  try {
+    return JSON.parse(localStorage.getItem(clave));
+  } catch (error) {
+    return null;
+  }
+}
+
+function guardar(clave, valor) {
+  try {
+    localStorage.setItem(clave, JSON.stringify(valor));
+  } catch (error) {
+    // si el navegador no permite guardar, la calculadora sigue funcionando
+  }
+}
+
+function actualizarSugerencias() {
+  const historial = leerGuardado("vivesanoHistorial") || {};
+
+  camposConHistorial.forEach(campo => {
+    const lista = document.querySelector(`#historial-${campo}`);
+    lista.innerHTML = (historial[campo] || [])
+      .map(valor => `<option value="${valor}"></option>`)
+      .join("");
+  });
+}
+
+function guardarDatos() {
+  const datos = {};
+  camposGuardados.forEach(campo => {
+    datos[campo] = document.querySelector(`#${campo}`).value;
+  });
+  guardar("vivesanoDatos", datos);
+
+  // últimos valores escritos, sin repetir y el más reciente primero
+  const historial = leerGuardado("vivesanoHistorial") || {};
+  camposConHistorial.forEach(campo => {
+    const valor = datos[campo];
+    const anteriores = (historial[campo] || []).filter(v => v !== valor);
+    historial[campo] = [valor, ...anteriores].slice(0, maxHistorial);
+  });
+  guardar("vivesanoHistorial", historial);
+
+  actualizarSugerencias();
+}
+
+function cargarDatos() {
+  const datos = leerGuardado("vivesanoDatos");
+
+  if (datos) {
+    camposGuardados.forEach(campo => {
+      if (datos[campo] !== undefined) {
+        document.querySelector(`#${campo}`).value = datos[campo];
+      }
+    });
+
+    // mostrar las opciones que dependen de otros campos
+    selectSexo.dispatchEvent(new Event("change"));
+    selectCondicion.value = datos.condicionFemenina || "ninguna";
+    selectCondicion.dispatchEvent(new Event("change"));
+    inputEdad.dispatchEvent(new Event("input"));
+  }
+
+  actualizarSugerencias();
+}
+
+document.querySelector("#btnBorrarDatos").addEventListener("click", () => {
+  try {
+    localStorage.removeItem("vivesanoDatos");
+    localStorage.removeItem("vivesanoHistorial");
+    localStorage.removeItem("vivesanoCalculo");
+  } catch (error) {
+    // nada que borrar
+  }
+
   formulario.reset();
   bloqueFemenino.style.display = "none";
   bloqueTrimestre.style.display = "none";
   avisoEdad.innerHTML = "";
-  inputEdad.focus();
+  cajaError.innerHTML = "";
+  actualizarSugerencias();
 });
 
 // cerrar tocando fuera o con Escape
@@ -220,6 +305,7 @@ formulario.addEventListener("submit", (e) => {
 
   resultado.innerHTML = html;
   abrirModal();
+  guardarDatos();
 
   // guardar para sugerir recetas
   try {
@@ -232,3 +318,5 @@ formulario.addEventListener("submit", (e) => {
     // si el navegador no permite guardar, las recetas se muestran sin sugerencia
   }
 });
+
+cargarDatos();

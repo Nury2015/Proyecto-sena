@@ -513,3 +513,16 @@ select:focus {
 #btnRecalcular:hover {
   background-color: #e6f5ed;
 }
+
+/* botón para borrar datos guardados */
+.boton-secundario {
+  background-color: transparent;
+  color: #3f8f6b;
+  font-weight: normal;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.boton-secundario:hover {
+  background-color: #e6f5ed;
+}

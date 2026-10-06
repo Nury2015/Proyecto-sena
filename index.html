@@ -22,16 +22,19 @@
     <h1>Calculadora Nutricional</h1>
     <form id="formulario">
       <label for="edad">Edad</label>
-      <input type="number" id="edad" placeholder="Edad" value="">
+      <input type="number" id="edad" placeholder="Edad" value="" list="historial-edad" autocomplete="off">
+      <datalist id="historial-edad"></datalist>
       <div id="aviso-envejecimiento">
 
       </div>
 
       <label for="peso">Peso (kg)</label>
-      <input type="number" id="peso" placeholder="Peso (kg)" value="">
+      <input type="number" id="peso" placeholder="Peso (kg)" value="" list="historial-peso" autocomplete="off">
+      <datalist id="historial-peso"></datalist>
 
       <label for="estatura">Estatura (cm)</label>
-      <input type="number" id="estatura" placeholder="Estatura (cm)" value="">
+      <input type="number" id="estatura" placeholder="Estatura (cm)" value="" list="historial-estatura" autocomplete="off">
+      <datalist id="historial-estatura"></datalist>
 
       <label for="sexo">Sexo asignado al nacer:</label>
       <select id="sexo" name="sexo">
@@ -92,6 +95,9 @@
 </select>
 
       <button type="submit">Calcular</button>
+      <button type="button" id="btnBorrarDatos" class="boton-secundario">
+        <i class="fa-solid fa-eraser"></i> Borrar mis datos guardados
+      </button>
 
     </form>
 
