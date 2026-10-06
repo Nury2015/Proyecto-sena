@@ -7,6 +7,8 @@ const bloqueFemenino = document.querySelector("#estadoFemenino");
 const bloqueTrimestre = document.querySelector("#trimestreEmbarazo");
 const avisoEdad = document.querySelector("#aviso-envejecimiento");
 const resultado = document.querySelector("#resultado");
+const cajaError = document.querySelector("#error");
+const modal = document.querySelector("#modalResultados");
 
 const factoresActividad = {
   sedentario: 1.2,
@@ -81,11 +83,43 @@ function clasificarIMC(imc) {
 }
 
 function mostrarError(mensaje) {
-  resultado.innerHTML = `<div class="resultado error"><p>${mensaje}</p></div>`;
+  cajaError.innerHTML = `<div class="resultado error"><p>${mensaje}</p></div>`;
 }
+
+function abrirModal() {
+  modal.style.display = "flex";
+}
+
+function cerrarModal() {
+  modal.style.display = "none";
+}
+
+// botones de la ventana de resultados
+document.querySelector("#btnRecetas").addEventListener("click", () => {
+  window.location.href = "recetas.html";
+});
+
+document.querySelector("#btnRecalcular").addEventListener("click", () => {
+  cerrarModal();
+  formulario.reset();
+  bloqueFemenino.style.display = "none";
+  bloqueTrimestre.style.display = "none";
+  avisoEdad.innerHTML = "";
+  inputEdad.focus();
+});
+
+// cerrar tocando fuera o con Escape
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) cerrarModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") cerrarModal();
+});
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
+  cajaError.innerHTML = "";
 
   const edad = Number(inputEdad.value);
   const peso = Number(document.querySelector("#peso").value);
@@ -158,7 +192,7 @@ formulario.addEventListener("submit", (e) => {
   const aguaL = (peso * 35) / 1000;
 
   let html = `
-    <div class="resultado">
+    <div class="resultado-modal">
       <h2>Tus resultados</h2>
       <p><strong>IMC:</strong> ${imc.toFixed(1)} (${clasificarIMC(imc)})</p>
       <p><strong>Metabolismo basal:</strong> ${Math.round(tmb)} kcal</p>
@@ -185,5 +219,5 @@ formulario.addEventListener("submit", (e) => {
     </div>`;
 
   resultado.innerHTML = html;
-  resultado.scrollIntoView({ behavior: "smooth" });
+  abrirModal();
 });
