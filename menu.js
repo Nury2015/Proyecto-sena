@@ -3,9 +3,10 @@ function iniciarMenu() {
 
   const boton = document.querySelector("#btn-menu");
   const menu = document.querySelector(".menu");
-  const icono = boton.querySelector("i");
 
   if (!boton || !menu) return;
+
+  const icono = boton.querySelector("i");
 
   // abrir / cerrar con botón
   boton.addEventListener("click", (e) => {
@@ -52,18 +53,20 @@ function iniciarMenu() {
     });
   });
 
-}
-const links = document.querySelectorAll(".menu a");
-let currentPage = window.location.pathname.split("/").pop();
+  // marcar la página actual
+  const links = document.querySelectorAll(".menu a");
+  let currentPage = window.location.pathname.split("/").pop();
 
-if (currentPage === "") {
-  currentPage = "index.html";
-}
-
-links.forEach(link => {
-  if (link.getAttribute("href") === currentPage) {
-    link.classList.add("active");
+  if (currentPage === "") {
+    currentPage = "index.html";
   }
-});
+
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+
+}
 
 window.iniciarMenu = iniciarMenu;

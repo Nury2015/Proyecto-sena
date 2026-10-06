@@ -12,7 +12,7 @@
   top: 0;
   width: 240px;
   height: 100vh;
-  background: linear-gradient(180deg,#53a799,#000000);
+  background: linear-gradient(180deg,#5fb08a,#2f6f57);
   color: white;
   display: flex;
   flex-direction: column;
@@ -62,9 +62,9 @@
 }
 
 .menu a.active {
-  color: #2ecc71;
+  color: #e6f7ee;
   font-weight: bold;
-  border-bottom: 2px solid #2ecc71;
+  border-bottom: 2px solid #e6f7ee;
 }
 .user{
   text-align: center;
@@ -139,7 +139,7 @@
   /* 🍔 Mostrar hamburguesa */
   .hamburguesa {
     display: block;
-    color: #d0eaff;
+    color: #ffffff;
   }
 
   /* 🚫 Ocultar menú */
@@ -148,7 +148,7 @@
     top: 60px;
     left: 0;
     width: 100%;
-    background: black;
+    background: #2f6f57;
     display: none;
     flex-direction: column;
   }
@@ -156,9 +156,9 @@
   /* ✅ Mostrar cuando se active */
  .menu.active {
   display: flex;
-  background: white;
-        color: black;
-        margin-top: 41px;
+  background: #f4fbf7;
+  color: #2f4f43;
+  margin-top: 41px;
 }
 
   /* 📱 Ajustar calculadora */

@@ -10,9 +10,9 @@ body {
   font-weight: 500;
   /* o el valor que necesites */
   font-style: normal;
-  background: url("img/fondo.jpeg") no-repeat center center fixed;
-  background-size: cover;
-  height: 100%;
+  background: linear-gradient(135deg, #f1faf5 0%, #dcf1e6 50%, #c8e8d8 100%) fixed;
+  color: #2f4f43;
+  min-height: 100vh;
 }
 
 
@@ -148,13 +148,14 @@ body {
 
 
 .container {
-   margin-left: 267px;
   width: 500px;
-  margin: 20px auto;
+  max-width: calc(100% - 300px);
+  margin: 20px auto 20px 300px;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid #b7dcc8;
   border-radius: 20px;
-  box-shadow: 0 0 15px #f1f1f1;
+  box-shadow: 0 8px 24px rgba(47, 111, 87, 0.15);
   /* animation: float 3s infinite ease-in-out; */
 }
 
@@ -174,7 +175,7 @@ h1 {
 
   margin-top: 0px;
   text-align: center;
-  color: #f3c12b;
+  color: #2f6f57;
 }
 
 form {
@@ -184,7 +185,7 @@ form {
 }
 
 label {
-  color: #f9f9f9;
+  color: #2f4f43;
 }
 
 input,
@@ -198,7 +199,8 @@ button {
 
 input,
 select {
-  background-color: #f9f9f9;
+  background-color: #f4fbf7;
+  border: 1px solid #b7dcc8;
   color: #333;
 }
 
@@ -232,25 +234,25 @@ select {
 
 
 button {
-  background-color: #ffcc00;
-  color: #000;
+  background-color: #5fb08a;
+  color: #fff;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #ff9900;
+  background-color: #3f8f6b;
 }
 
 
 .resultado {
   margin-top: 20px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #000;
+  background-color: #f4fbf7;
+  color: #2f4f43;
   border-radius: 20px;
-  box-shadow: 0 0 10px #ffcc00;
+  box-shadow: 0 0 10px rgba(95, 176, 138, 0.5);
   animation: aparecer 0.5s ease forwards;
 }
 
@@ -439,21 +441,21 @@ button[type="submit"] {
   }
 
   /* ✅ Mostrar cuando se active */
-  .menu.activo {
+  .menu.active {
     display: flex;
   }
 
   /* 📱 Ajustar calculadora */
   .container {
-    margin-left: 0;
-    margin-top: 80px;
+    margin: 80px auto 20px;
     width: 90%;
+    max-width: 500px;
   }
 }
 /* resultados de la calculadora */
 .resultado h2 {
   margin-top: 0;
-  color: #3065b4;
+  color: #2f6f57;
   text-align: center;
 }
 
@@ -469,7 +471,12 @@ button[type="submit"] {
 }
 
 .aviso {
-  color: #f3c12b;
+  color: #b7791f;
   font-size: 0.9rem;
   margin: 4px 0;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #5fb08a;
 }
